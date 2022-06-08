@@ -1,21 +1,15 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+@Entity
 @Table
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column
     private String name;
-
-    @Column
     private String lastName;
-
-    @Column
     private Byte age;
 
     public User() {
@@ -59,6 +53,11 @@ public class User {
     public void setAge(Byte age) {
         this.age = age;
     }
+
+    public String MysqlGenerate() {
+       return "id BIGINT not NULL AUTO_INCREMENT, name VARCHAR(255), lastName VARCHAR(255), age TINYINT, PRIMARY KEY ( id )";
+    }
+
 
     @Override
     public String toString() {
